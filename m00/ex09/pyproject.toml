@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ft_package"
+version = "0.0.1"
+description = "A sample test package"
+authors = [
+    { name="nferrad", email="nferrad@student.42.fr" }
+]
+license = {text = "MIT"}
+readme = "README.md"
+urls = { "Homepage" = "https://github.com/nferrad/ft_package" }
