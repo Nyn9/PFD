@@ -5,12 +5,12 @@ def slice_me(family: list, start: int, end: int) -> list:
     """Slice the family list from start to end index."""
     try:
         if not isinstance(family, list):
-            raise ValueError("Family must be a list.")
+            raise AssertionError("Family must be a list.")
         if not isinstance(start, int) or not isinstance(end, int):
-            raise ValueError("Start and end indices must be integers.")
+            raise AssertionError("Start and end indices must be integers.")
         arr = np.array(family)
         if arr.ndim != 2:
-            raise ValueError("Family must be a 2D array.")
+            raise AssertionError("Family must be a 2D array.")
         print(f"My shape is: {arr.shape}")
         new_arr = arr[start:end]
         print(f"My new shape is: {new_arr.shape}")
