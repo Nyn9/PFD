@@ -13,13 +13,10 @@ def ft_load(path: str) -> np.array:
             pass
     except (FileNotFoundError, PermissionError, OSError):
         raise AssertionError("Image could not be loaded.")
-    img = cv2.imread(path)
+    img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     if img is None:
         raise AssertionError("Image could not be loaded.")
-    print(f"The shape of the image is: {img.shape}")
-    rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    print(rgb)
-    return rgb
+    return img
 
 
 def main():
