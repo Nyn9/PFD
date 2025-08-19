@@ -1,4 +1,3 @@
-from load_image import ft_load
 import numpy as np
 
 
@@ -62,16 +61,15 @@ def main():
     """Main function to test the image processing functions."""
 
     try:
-        invert = ft_invert(None)
+        ft_invert(None)
     except Exception as e:
         print(f"Error: {e}")
 
     try:
         arr = np.array([0, 1])
-        invert = ft_invert(arr)
+        ft_invert(arr)
     except Exception as e:
         print(f"Error: {e}")
-
 
 
 if __name__ == "__main__":
