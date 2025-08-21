@@ -29,7 +29,6 @@ def display(life: pd.DataFrame, gdp: pd.DataFrame):
 
     df = pd.merge(gdp_1900, life_1900, on='country', suffixes=('_gdp', '_life'))
 
-    # plt.figure(figsize=(10,6))
     plt.scatter(df['1900_gdp'], df['1900_life'])
     plt.xscale('log')
     plt.xticks([300, 1000, 10000], ['300', '1k', '10k'])
