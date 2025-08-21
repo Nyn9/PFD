@@ -23,11 +23,10 @@ def display(life: pd.DataFrame, gdp: pd.DataFrame):
     if 'country' not in life.columns or 'country' not in gdp.columns:
         raise AssertionError("Missing 'country' column.")
 
+    gdp1900 = gdp[['country', '1900']]
+    life1900 = life[['country', '1900']]
 
-    gdp_1900 = gdp[['country', '1900']]
-    life_1900 = life[['country', '1900']]
-
-    df = pd.merge(gdp_1900, life_1900, on='country', suffixes=('_gdp', '_life'))
+    df = pd.merge(gdp1900, life1900, on='country', suffixes=('_gdp', '_life'))
 
     plt.scatter(df['1900_gdp'], df['1900_life'])
     plt.xscale('log')
