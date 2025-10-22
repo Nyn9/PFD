@@ -11,8 +11,8 @@ def ft_filter(function, iterable):
             raise TypeError(f"'{type(iterable).__name__}' \
 object is not iterable")
         if function is None:
-            return (item for item in iterable if item)
-        return (item for item in iterable if function(item))
+            return [item for item in iterable if item]
+        return [item for item in iterable if function(item)]
     except TypeError as e:
         print(f"TypeError: {e}")
         sys.exit(1)
@@ -20,9 +20,10 @@ object is not iterable")
 
 def main():
     """Example usage of ft_filter function."""
-    data = [1, 2, 3, 4, 5]
+    data = [0, 1, 2, 3, 4, 5]
     n = 5
     print(list(ft_filter(lambda x: x > 2, data)))
+    print(list(ft_filter(None, data)))
     print(list(ft_filter(lambda x: x > 2, n)))
 
 
