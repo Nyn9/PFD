@@ -9,7 +9,7 @@ def main():
     try:
         if ac != 3:
             raise AssertionError("the arguments are bad")
-        if ((not av[1].isalpha() and av[1].isspace()) or not av[2].isdigit()):
+        if (not av[1] or (not av[1].isalpha() and av[1].isspace()) or not av[2].isdigit()):
             raise AssertionError("the arguments are bad")
         s = av[1].split(' ')
         length = int(av[2])
