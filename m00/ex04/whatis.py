@@ -7,10 +7,8 @@ def main():
     if ac < 2:
         return
     try:
-        if ac > 2:
-            raise AssertionError("more than one argument is provided")
-        if not av[1].isdigit() and not av[1].startswith('-'):
-            raise AssertionError("argument is not an integer")
+        assert ac <= 2, "more than one argument is provided"
+        assert av[1].isdigit() or av[1].startswith('-'), "argument is not an integer"
         n = int(av[1])
         if n % 2 == 0:
             print("I'm Even.")

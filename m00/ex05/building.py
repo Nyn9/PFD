@@ -1,5 +1,4 @@
 import sys
-import string
 
 
 def main():
@@ -8,8 +7,7 @@ def main():
     ac = len(av)
 
     try:
-        if ac > 2:
-            raise AssertionError("more than one argument is provided")
+        assert ac <= 2, "more than one argument is provided"
         if ac < 2:
             print("What is the text to count?", flush=True)
             s = sys.stdin.readline()
@@ -18,7 +16,7 @@ def main():
         print(f"The text contains {len(s)} characters:")
         print(f"{sum(1 for c in s if c.isupper())} upper letters")
         print(f"{sum(1 for c in s if c.islower())} lower letters")
-        print(f"{sum(1 for c in s if c in string.punctuation)} \
+        print(f"{sum(1 for c in s if not c.isalnum() and not c.isspace())} \
 punctuation marks")
         print(f"{sum(1 for c in s if c.isspace())} spaces")
         print(f"{sum(1 for c in s if c.isdigit())} digits")

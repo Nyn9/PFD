@@ -3,8 +3,14 @@ import os
 
 def ft_tqdm(lst: range) -> None:
     """Custom progress bar similar to tqdm."""
-    total = len(lst)
-    size = os.get_terminal_size().columns - 40
+    try:
+        total = len(lst)
+        size = os.get_terminal_size().columns - 40
+    except OSError:
+        size = 80
+    except TypeError:
+        print("TypeError: 'range' object is required.")
+        return
     for i, item in enumerate(lst):
         percent = int((i + 1) / total * 100)
         bar = ('█' * (int((percent / 100) * size))).ljust(size)
@@ -17,7 +23,7 @@ from time import sleep
 
 def main():
     """Tester for the custom progress bar."""
-    for elem in ft_tqdm(range(10)):
+    for elem in ft_tqdm("abc"):
         sleep(0.01)
     print()
 
