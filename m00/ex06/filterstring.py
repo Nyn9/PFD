@@ -8,7 +8,8 @@ def main():
     ac = len(av)
     try:
         assert ac == 3, "the arguments are bad"
-        assert av[1] and (av[1].isalpha() or av[1].isspace()) and av[2].isdigit(), "the arguments are bad"
+        assert av[1] and (not av[1].isspace() or av[1].isalnum()) \
+            and av[2].isdigit(), "the arguments are bad"
         s = av[1].split(' ')
         length = int(av[2])
         word = [w for w in s if w.isalpha()]

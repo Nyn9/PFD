@@ -1,3 +1,4 @@
+from time import sleep
 import os
 
 
@@ -18,8 +19,6 @@ def ft_tqdm(lst: range) -> None:
         yield item
     print()
 
-
-from time import sleep
 
 def main():
     """Tester for the custom progress bar."""

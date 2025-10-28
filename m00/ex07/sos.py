@@ -5,7 +5,7 @@ def translate_morse_char(c):
     """Translates a single character to Morse code.
     Raises AssertionError if the character is not valid.
     """
-    NESTED_MORSE = {
+    morse_dict = {
                         " ": "/ ",
                         "A": ".- ",
                         "B": "-... ",
@@ -44,9 +44,8 @@ def translate_morse_char(c):
                         "8": "---.. ",
                         "9": "----. ",
                     }
-    if not c.upper() in NESTED_MORSE:
-        raise AssertionError("the arguments are bad")
-    return NESTED_MORSE[c.upper()]
+    assert c.upper() in morse_dict, "the arguments are bad"
+    return morse_dict[c.upper()]
 
 
 def main():
@@ -54,8 +53,7 @@ def main():
     av = sys.argv
     ac = len(av)
     try:
-        if ac != 2:
-            raise AssertionError("the arguments are bad")
+        assert ac == 2, "the arguments are bad"
         s = av[1]
         morse_code = ''.join(translate_morse_char(c) for c in s)
         print(morse_code.strip())
