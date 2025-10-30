@@ -1,39 +1,34 @@
 import pandas as pd
-import os
 
 
 def load(path: str) -> pd.DataFrame:
     """Load a CSV file into a DataFrame."""
-    if not isinstance(path, str) or not path.strip():
-        raise AssertionError("Path must be a non-empty string")
-    if not path.endswith(".csv"):
-        raise AssertionError("File must be a CSV")
-    if not os.path.isfile(path):
-        raise AssertionError("File does not exist")
     try:
+        assert isinstance(path, str) and path.strip(), \
+            "Path must be a non-empty string"
+        assert path.endswith(".csv"), "File must be a CSV"
         df = pd.read_csv(path)
-    except Exception as e:
-        raise AssertionError(f"Could not load CSV: {e}")
-    print("Load dataset of dimensions:", df.shape)
-    return df
+        print("Load dataset of dimensions:", df.shape)
+        return df
+    except AssertionError as e:
+        print(f"AssertionError: {e}")
+    except FileNotFoundError as e:
+        print(f"FileNotFoundError: {e}")
+    except PermissionError as e:
+        print(f"PermissionError: {e}")
+    except pd.errors.EmptyDataError as e:
+        print(f"EmptyDataError: {e}")
+    except pd.errors.ParserError as e:
+        print(f"ParserError: {e}")
 
 
 def main():
-    """Main function to load and display the CSV data."""
-    try:
-        print(load("Nonexisting.csv"))
-    except AssertionError as e:
-        print(f"Error: {e}")
-
-    try:
-        print(load("life_expectancy_years.notcsv"))
-    except AssertionError as e:
-        print(f"Error: {e}")
-
-    try:
-        print(load(None))
-    except AssertionError as e:
-        print(f"Error: {e}")
+    """Main function to test the load function."""
+    load("Nonexisting.csv")
+    load("empty.csv")
+    load("life_expectancy_years.notcsv")
+    load(None)
+    load(5)
 
 
 if __name__ == "__main__":
