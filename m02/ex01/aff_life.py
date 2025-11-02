@@ -23,6 +23,8 @@ def aff_life(df: pd.DataFrame):
         plt.show()
     except AssertionError as e:
         print(f"Error: {e}")
+    except TypeError as e:
+        print(f"TypeError: {e}")
     except KeyboardInterrupt:
         plt.close()
 
